@@ -1,0 +1,22 @@
+{
+  "name": "history-service",
+  "version": "1.0.0",
+  "description": "history-service/\r ├── src/\r │   ├── controllers/\r │   │   └── historyController.ts\r │   ├── models/\r │   │   └── actionModel.ts\r │   ├── routes/\r │   │   └── historyRoutes.ts\r │   ├── services/\r │   │   └── historyService.ts\r │   ├── database.ts\r │   └── app.ts\r ├── .env\r ├── package.json\r ├── tsconfig.json\r ├── README.md",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.0",
+    "typescript": "^5.6.3"
+  }
+}

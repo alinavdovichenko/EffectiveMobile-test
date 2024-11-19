@@ -1,0 +1,18 @@
+{
+  "name": "inventory-service",
+  "version": "1.0.0",
+  "description": "inventory-service/\r ├── src/\r │   ├── controllers/\r │   │   ├── productController.js\r │   │   └── inventoryController.js\r │   ├── models/\r │   │   ├── productModel.js\r │   │   └── inventoryModel.js\r │   ├── routes/\r │   │   ├── productRoutes.js\r │   │   └── inventoryRoutes.js\r │   ├── database.js\r │   └── app.js\r ├── .env\r ├── package.json\r ├── README.md",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "pg": "^8.13.1"
+  }
+}
