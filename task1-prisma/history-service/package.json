@@ -1,13 +1,13 @@
 {
   "name": "history-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "history-service/\r ├── prisma/\r │   ├── schema.prisma\r │   └── migrations/\r ├── src/\r │   ├── controllers/\r │   │   └── historyController.ts\r │   ├── routes/\r │   │   └── historyRoutes.ts\r │   ├── prisma.ts\r │   ├── app.ts\r │   └── utils/\r │       └── pagination.ts\r ├── .env\r ├── package.json\r ├── tsconfig.json\r ├── README.md",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alina Vdovichenko",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.22.0",
