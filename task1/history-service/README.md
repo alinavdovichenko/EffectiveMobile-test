@@ -16,3 +16,14 @@ history-service/
 ├── package.json
 ├── tsconfig.json
 ├── README.md
+
+## GET /api/history/
+Fetches logged actions with filters.
+
+Query Parameters:
+shop_id: Filter by shop ID.
+plu: Filter by product PLU.
+dateFrom / dateTo: Filter by timestamp range.
+action: Filter by action type.
+page: Page number for pagination.
+limit: Number of results per page.

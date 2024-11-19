@@ -1,28 +1,35 @@
-import { pool } from '../database';
+import pool from '../database';
 
-export const logAction = async (data: { shopId?: number; plu?: string; action: string }) => {
-  const query = 'INSERT INTO actions (shop_id, plu, action, action_date) VALUES ($1, $2, $3, NOW()) RETURNING *';
-  const result = await pool.query(query, [data.shopId, data.plu, data.action]);
+interface Action {
+  shop_id: string;
+  plu: string;
+  action: string;
+  timestamp: Date;
+}
+
+export const logAction = async (action: Action) => {
+  const query = `
+    INSERT INTO actions (shop_id, plu, action, timestamp) 
+    VALUES ($1, $2, $3, $4) RETURNING *`;
+  const values = [action.shop_id, action.plu, action.action, action.timestamp];
+  const result = await pool.query(query, values);
   return result.rows[0];
 };
 
-export const getActions = async (filters: {
-  shopId?: number;
-  plu?: string;
-  action?: string;
-  dateFrom?: string;
-  dateTo?: string;
-  page: number;
-  limit: number;
-}) => {
-  let query = 'SELECT * FROM actions WHERE 1=1';
-  const values: any[] = [];
+export const getActionsByFilters = async (filters: any, offset: number, limit: number) => {
+  const { shop_id, plu, dateFrom, dateTo, action } = filters;
 
-  if (filters.shopId) {
-    query += ' AND shop_id = $1';
-    values.push(filters.shopId);
-  }
+  const query = `
+    SELECT * FROM actions
+    WHERE ($1::text IS NULL OR shop_id = $1)
+      AND ($2::text IS NULL OR plu = $2)
+      AND ($3::timestamp IS NULL OR timestamp >= $3)
+      AND ($4::timestamp IS NULL OR timestamp <= $4)
+      AND ($5::text IS NULL OR action = $5)
+    ORDER BY timestamp DESC
+    OFFSET $6 LIMIT $7`;
 
+  const values = [shop_id, plu, dateFrom, dateTo, action, offset, limit];
   const result = await pool.query(query, values);
   return result.rows;
 };
